@@ -1,3 +1,21 @@
+/**
+ * # Terraform AWS Budgets
+ *
+ * This Terraform module provides a preconfigured solution for setting up
+ * AWS S3 buckets in your AWS account. With this module, you can easily
+ * and efficiently create and manage S3 buckets with advanced features
+ * such as transitions, security, encryption, and public access restriction.
+ * Our team has extensive experience working with AWS S3 and has optimized
+ * this module to provide the best possible experience for users.
+ *
+ * By using this Terraform module, you can save time and effort in setting up
+ * and managing your S3 buckets, as well as ensure that your data is secure
+ * and protected. The module encapsulates all necessary configurations,
+ * making it easy to use and integrate into your existing AWS environment.
+ * Whether you are just getting started with AWS S3 or looking for a more
+ * efficient way to manage your buckets, this Terraform module provides a
+ * preconfigured solution with advanced features.
+ */
 resource "aws_s3_bucket" "main" {
   bucket = var.name
 
