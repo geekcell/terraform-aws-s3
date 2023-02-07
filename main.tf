@@ -1,5 +1,5 @@
 /**
- * # Terraform AWS Budgets
+ * # Terraform AWS S3
  *
  * This Terraform module provides a preconfigured solution for setting up
  * AWS S3 buckets in your AWS account. With this module, you can easily
