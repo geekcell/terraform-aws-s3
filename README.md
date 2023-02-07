@@ -33,7 +33,22 @@
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=HIPAA)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/fedramp_moderate)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=FEDRAMP+%28MODERATE%29)
 
+# Terraform AWS S3
 
+This Terraform module provides a preconfigured solution for setting up
+AWS S3 buckets in your AWS account. With this module, you can easily
+and efficiently create and manage S3 buckets with advanced features
+such as transitions, security, encryption, and public access restriction.
+Our team has extensive experience working with AWS S3 and has optimized
+this module to provide the best possible experience for users.
+
+By using this Terraform module, you can save time and effort in setting up
+and managing your S3 buckets, as well as ensure that your data is secure
+and protected. The module encapsulates all necessary configurations,
+making it easy to use and integrate into your existing AWS environment.
+Whether you are just getting started with AWS S3 or looking for a more
+efficient way to manage your buckets, this Terraform module provides a
+preconfigured solution with advanced features.
 
 ## Inputs
 
@@ -62,12 +77,12 @@
 
 ## Resources
 
-- resource.aws_s3_bucket.main (main.tf#1)
-- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#33)
-- resource.aws_s3_bucket_metric.main (main.tf#66)
-- resource.aws_s3_bucket_policy.main (main.tf#7)
-- resource.aws_s3_bucket_public_access_block.main (main.tf#12)
-- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#21)
+- resource.aws_s3_bucket.main (main.tf#19)
+- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#51)
+- resource.aws_s3_bucket_metric.main (main.tf#84)
+- resource.aws_s3_bucket_policy.main (main.tf#25)
+- resource.aws_s3_bucket_public_access_block.main (main.tf#30)
+- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#39)
 
 # Examples
 ### Basic Example
