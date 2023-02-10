@@ -55,6 +55,7 @@ preconfigured solution with advanced features.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_expiration"></a> [expiration](#input\_expiration) | The number of days after which to expunge the objects. | `number` | `0` | no |
+| <a name="input_is_access_log_bucket"></a> [is\_access\_log\_bucket](#input\_is\_access\_log\_bucket) | If it is an Access Log Bucket, then the encryption on the bucket needs to be changed to AWS Managed Key. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the bucket. | `string` | n/a | yes |
 | <a name="input_noncurrent_version_expiration"></a> [noncurrent\_version\_expiration](#input\_noncurrent\_version\_expiration) | The number of days after which to delete the noncurrent object. | `number` | `90` | no |
 | <a name="input_noncurrent_version_transitions"></a> [noncurrent\_version\_transitions](#input\_noncurrent\_version\_transitions) | Transition to another storage class for noncurrent\_versions. | <pre>list(object({<br>    noncurrent_days = number<br>    storage_class   = string<br>  }))</pre> | <pre>[<br>  {<br>    "noncurrent_days": 30,<br>    "storage_class": "STANDARD_IA"<br>  }<br>]</pre> | no |
@@ -77,12 +78,14 @@ preconfigured solution with advanced features.
 
 ## Resources
 
-- resource.aws_s3_bucket.main (main.tf#1)
-- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#33)
-- resource.aws_s3_bucket_metric.main (main.tf#66)
-- resource.aws_s3_bucket_policy.main (main.tf#7)
-- resource.aws_s3_bucket_public_access_block.main (main.tf#12)
-- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#21)
+- resource.aws_s3_bucket.main (main.tf#19)
+- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#51)
+- resource.aws_s3_bucket_metric.main (main.tf#84)
+- resource.aws_s3_bucket_policy.main (main.tf#25)
+- resource.aws_s3_bucket_public_access_block.main (main.tf#30)
+- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#39)
+- data source.aws_elb_service_account.main (data.tf#1)
+- data source.aws_iam_policy_document.access_log_bucket_policy (data.tf#3)
 
 # Examples
 ### Basic Example
@@ -104,6 +107,28 @@ module "with-transitions" {
       days          = 90
     }
   ]
+}
+```
+### for Access Logs
+```hcl
+module "for-access-logs" {
+  source = "../../"
+  name   = "my-access-logs"
+
+  is_access_log_bucket = true
+
+  transitions = [
+    {
+      storage_class = "STANDARD_IA"
+      days          = 90
+    },
+    {
+      storage_class = "GLACIER"
+      days          = 180
+    }
+  ]
+
+  expiration = 365
 }
 ```
 <!-- END_TF_DOCS -->
