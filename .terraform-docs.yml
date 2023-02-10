@@ -28,6 +28,10 @@ content: |-
     ```hcl
     {{ include "examples/with-transitions/main.tf" }}
     ```
+    ### for Access Logs
+    ```hcl
+    {{ include "examples/for-access-logs/main.tf" }}
+    ```
 
 output:
   file: "README.md"

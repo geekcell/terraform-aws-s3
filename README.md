@@ -77,12 +77,12 @@ preconfigured solution with advanced features.
 
 ## Resources
 
-- resource.aws_s3_bucket.main (main.tf#19)
-- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#51)
-- resource.aws_s3_bucket_metric.main (main.tf#84)
-- resource.aws_s3_bucket_policy.main (main.tf#25)
-- resource.aws_s3_bucket_public_access_block.main (main.tf#30)
-- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#39)
+- resource.aws_s3_bucket.main (main.tf#1)
+- resource.aws_s3_bucket_lifecycle_configuration.main (main.tf#33)
+- resource.aws_s3_bucket_metric.main (main.tf#66)
+- resource.aws_s3_bucket_policy.main (main.tf#7)
+- resource.aws_s3_bucket_public_access_block.main (main.tf#12)
+- resource.aws_s3_bucket_server_side_encryption_configuration.main (main.tf#21)
 
 # Examples
 ### Basic Example

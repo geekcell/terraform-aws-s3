@@ -6,15 +6,21 @@ variable "tags" {
 }
 
 # AWS S3
-variable "name" {
-  description = "The name of the bucket."
-  type        = string
-}
-
 variable "expiration" {
   default     = 0
   description = "The number of days after which to expunge the objects."
   type        = number
+}
+
+variable "is_access_log_bucket" {
+  default     = false
+  description = "If it is an Access Log Bucket, then the encryption on the bucket needs to be changed to AWS Managed Key."
+  type        = bool
+}
+
+variable "name" {
+  description = "The name of the bucket."
+  type        = string
 }
 
 variable "noncurrent_version_expiration" {
