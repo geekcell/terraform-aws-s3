@@ -23,8 +23,15 @@ resource "aws_s3_bucket" "main" {
 }
 
 resource "aws_s3_bucket_policy" "main" {
+  count  = var.is_access_log_bucket ? 0 : 1
   bucket = aws_s3_bucket.main.id
   policy = var.policy
+}
+
+resource "aws_s3_bucket_policy" "is_access_log_bucket" {
+  count  = var.is_access_log_bucket ? 1 : 0
+  bucket = aws_s3_bucket.main.id
+  policy = data.aws_iam_policy_document.access_log_bucket_policy.json
 }
 
 resource "aws_s3_bucket_public_access_block" "main" {
@@ -36,13 +43,26 @@ resource "aws_s3_bucket_public_access_block" "main" {
   restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "with_aws_managed_key" {
+  count  = var.is_access_log_bucket ? 1 : 0
+  bucket = aws_s3_bucket.main.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+    bucket_key_enabled = true
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "with_customer_managed_key" {
+  count  = var.is_access_log_bucket ? 0 : 1
   bucket = aws_s3_bucket.main.bucket
 
   rule {
     apply_server_side_encryption_by_default {
       sse_algorithm     = "aws:kms"
-      kms_master_key_id = module.kms.key_arn
+      kms_master_key_id = module.kms[0].key_arn
     }
     bucket_key_enabled = true
   }
@@ -87,6 +107,7 @@ resource "aws_s3_bucket_metric" "main" {
 }
 
 module "kms" {
+  count  = var.is_access_log_bucket ? 0 : 1
   source = "github.com/geekcell/terraform-aws-kms?ref=v1.0"
 
   alias = format("alias/s3/bucket/%s", var.name)
