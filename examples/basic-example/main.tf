@@ -1,4 +1,5 @@
 module "basic-example" {
   source = "../../"
-  name   = "my-bucket-123"
+  name   = var.name
+  policy = var.policy
 }

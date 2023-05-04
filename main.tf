@@ -23,6 +23,7 @@ resource "aws_s3_bucket" "main" {
 }
 
 resource "aws_s3_bucket_policy" "main" {
+  count  = var.policy != "" ? 1 : 0
   bucket = aws_s3_bucket.main.id
   policy = var.policy
 }
