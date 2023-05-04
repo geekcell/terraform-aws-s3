@@ -9,15 +9,13 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/google/uuid"
-
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
 func TestTerraformBasicExample(t *testing.T) {
-	bucketName := "test-" + uuid.New().String()
+	bucketName := "test-" + GetShortId()
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/basic-example",
@@ -117,4 +115,13 @@ func FilterBuckets(buckets []*s3.Bucket, name string) *s3.Bucket {
 	}
 
 	return nil
+}
+
+func GetShortId() string {
+	githubSha := os.Getenv("GITHUB_SHA")
+	if len(githubSha) >= 7 {
+		return githubSha[0:6]
+	}
+
+	return "local"
 }
