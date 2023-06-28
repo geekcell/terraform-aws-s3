@@ -4,6 +4,10 @@
 [![Release](https://github.com/geekcell/terraform-aws-s3/actions/workflows/release.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-s3/actions/workflows/release.yaml)
 [![Validate](https://github.com/geekcell/terraform-aws-s3/actions/workflows/validate.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-s3/actions/workflows/validate.yaml)
 [![Lint](https://github.com/geekcell/terraform-aws-s3/actions/workflows/linter.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-s3/actions/workflows/linter.yaml)
+[![Test](https://github.com/geekcell/terraform-aws-s3/actions/workflows/test.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-s3/actions/workflows/test.yaml)
+
+<!--
+Comment in if Bridgecrew is configured
 
 ### Security
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=INFRASTRUCTURE+SECURITY)
@@ -29,3 +33,5 @@
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=NIST-800-53)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=HIPAA)
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-s3/fedramp_moderate)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-s3&benchmark=FEDRAMP+%28MODERATE%29)
+
+-->
