@@ -88,7 +88,8 @@ resource "aws_s3_bucket_metric" "main" {
 }
 
 module "kms" {
-  source = "github.com/geekcell/terraform-aws-kms?ref=v1.0"
+  source  = "geekcell/kms/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   alias = format("alias/s3/bucket/%s", var.name)
 }
